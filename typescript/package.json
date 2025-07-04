@@ -1,25 +1,23 @@
 {
-  "name": "tradingeconomics",
-  "version": "1.0.0",
-  "description": "Sample Typescript App for the Trading Economics API",
-  "main": "app.js",
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tradingeconomics/tradingeconomics.git"
-  },
-  "author": "Trading Economics",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tradingeconomics/tradingeconomics/issues"
-  },
-  "homepage": "https://github.com/tradingeconomics/tradingeconomics#readme",
   "dependencies": {
-    "tradingeconomics-stream": "^0.2.0"
+    "nuxt": "^3.17.6",
+    "tradingeconomics-stream": "^0.2.0",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18"
+    "@types/node": "^18.11.18",
+    "@types/ws": "^8.18.1"
   }
 }

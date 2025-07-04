@@ -1,107 +1,75 @@
-# Trading Economics - Typescript - Market Data Stream
+# Nuxt Minimal Starter
 
-Trading Economics provides its users with economic indicators and quotes, delayed feeds and historical data for currencies, commodities, stock indexes, share prices and bond yields. 
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-#
-## Example
+## Setup
 
-Create an app.ts file with the contents:
-
-
-```typescript
-import { TEClient} from 'tradingeconomics-stream'
-
-// Credentials
-
-let key = 'guest'
-let secret = 'guest'
-
-if (process.env.apikey){
-  const apikey = process.env.apikey
-  if (apikey.includes(':')) {
-    key = apikey.split(':')[0]
-    secret = apikey.split(':')[1]
-  }
-}
-
-console.log("Credentials:", key)
-
-// Subscribing to Quotes
-
-const subscribe = (asset: string) => {
-  const client = new TEClient({
-    key: key,
-    secret: secret,
-  })
-
-  client.subscribe(asset)
-
-  client.on('message', msg => {
-    console.log(`Got price for asset ${asset}:`, msg.price)
-  })
-}
-
-subscribe('EURUSD:CUR')
-
-```
-
-#
-**Install Packages**
+Make sure to install dependencies:
 
 ```bash
-npm install 'tradingeconomics-stream'
-npm install -g typescript
-npm i --save-dev @types/node
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
+## Development Server
 
-#
-**Compile Typescript**
+Start the development server on `http://localhost:3000`:
 
 ```bash
-tsc app.ts
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-**Run the app**
+## Production
 
-Please change the keys to yours to remove guest limitations
+Build the application for production:
 
 ```bash
-export key=guest
-export secret=guest 
-node app.js
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
-#
 
-**Docker**
-
-Please pass your keys as environmental variables
+Locally preview production build:
 
 ```bash
-docker run --rm -it --init --name te-typescript -e key=guest -e secret=guest tradingeconomics/typescript:latest
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
 ```
-#
 
-
-
-##
-
-**More examples in Javascript**
-
-
-https://github.com/tradingeconomics/tradingeconomics/tree/master/nodejs
-
-##
-
-#
-
-**Acknowledgements** 
-
-
-Jonas Hals
-
-
-https://github.com/boxhock/tradingeconomics-nodejs-stream
-
-
-
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
