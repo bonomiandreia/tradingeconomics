@@ -22,3 +22,4 @@ var subscribe = function (asset) {
     });
 };
 subscribe('EURUSD:CUR');
+console.log('here')
