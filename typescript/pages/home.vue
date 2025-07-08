@@ -7,8 +7,7 @@
     </div>
 
     <div v-else-if="error">
-      <p>Sorry, something went wrong:</p>
-      <pre>{{ error.message }}</pre>
+      <p>Could not load credit ratings. Please try again later.</p>
     </div>
 
     <div v-else>
@@ -31,21 +30,39 @@
         </tbody>
       </table>
     </div>
+    <Snackbar
+      v-model:show="snackBar.show"
+      :message="snackBar.message"
+      :type="snackBar.type"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { CreditRating } from '~/types/creditRating';
 
+const snackBar = ref({
+  show: false,
+  message: '',
+  type: 'success' as 'success' | 'warning' | 'error',
+});
 
-const { data: ratings, pending, error } = await useFetch('/api/creditRating', {
+const { data: ratings, pending, error } = useFetch('/api/creditRating', {
   query: { country: 'sweden' },
   transform: (data): CreditRating[] => {
-
-    return data as CreditRating[]
+    return data as CreditRating[];
   }
-})
+});
+
+watch(error, (newError) => {
+  if (newError) {
+    snackBar.value.show = true;
+    snackBar.value.message = newError.message || 'An unexpected error occurred.';
+    snackBar.value.type = 'error';
+  }
+});
 </script>
+
 
 <style scoped>
 
