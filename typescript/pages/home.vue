@@ -26,7 +26,7 @@
             <td>{{ rating.Agency }}</td>
             <td>{{ rating.Rating }}</td>
             <td>{{ rating.Outlook }}</td>
-            <td>{{ new Date(rating.Date).toLocaleDateString() }}</td>
+            <td>{{ rating.Date }}</td>
           </tr>
         </tbody>
       </table>
