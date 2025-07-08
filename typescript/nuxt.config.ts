@@ -5,5 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     apiKey: process.env.APIKEY,
-  }
+  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n'],
+  css: ['@/assets/scss/tailwind.scss'],
 })
