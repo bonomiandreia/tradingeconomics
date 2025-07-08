@@ -1,22 +1,32 @@
-FROM node:alpine
-WORKDIR /tradingeconomics
+FROM node:lts as builder
+
+WORKDIR /src
+
+COPY package.json yarn.lock ./
+
+RUN yarn install --prefer-offline --pure-lockfile --non-interactive --production=false
 COPY . .
-RUN npm install --production
 
-# Please change this to your API Credentials
-ENV apikey='guest:guest'
+COPY /_docker/.env .env
+RUN cat .env
 
-CMD ["node", "app.js"]
+RUN yarn build
 
-# NOTES
+RUN cat .env
 
-# Build
-# docker build -t tradingeconomics/typescript:latest  .
+FROM node:lts-alpine
 
-# Run
-# docker run --rm -it --init --name te-typescript -e apikey='guest:guest' tradingeconomics/typescript:latest
+WORKDIR /src
 
-# Push
-# docker push tradingeconomics/typescript:latest
+COPY --from=builder /src/package.json /src/yarn.lock /src/.env ./
 
- 
+
+RUN cat .env
+
+RUN NODE_ENV=production yarn install --pure-lockfile --non-interactive --production=true
+COPY --from=builder /src/.output ./.output
+
+ENV HOST=0.0.0.0
+EXPOSE 3000
+
+CMD ["node", "./.output/server/index.mjs"]
