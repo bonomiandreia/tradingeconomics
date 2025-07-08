@@ -1,6 +1,10 @@
-<!-- pages/index.vue -->
+
 <template>
-  <h2>hello world!</h2>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
 
 <script setup lang="ts">

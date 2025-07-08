@@ -10,14 +10,19 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "chart.js": "^4.5.0",
     "nuxt": "^3.17.6",
+    "tailwindcss": "^4.1.11",
     "tradingeconomics-stream": "^0.2.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
     "ws": "^8.18.3"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.14.0",
     "@types/node": "^18.11.18",
-    "@types/ws": "^8.18.1"
+    "@types/ws": "^8.18.1",
+    "sass": "^1.89.2"
   }
 }
