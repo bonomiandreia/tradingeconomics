@@ -7,6 +7,6 @@ export default defineNuxtConfig({
     apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '',
     apiKey: process.env.NUXT_API_KEY
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n', 'nuxt-aos'],
   css: ['@/assets/scss/tailwind.scss'],
 })

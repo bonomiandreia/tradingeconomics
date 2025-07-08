@@ -15,6 +15,7 @@
     "@nuxtjs/tailwindcss": "^6.13.1",
     "chart.js": "^4.5.0",
     "nuxt": "^3.17.6",
+    "nuxt-aos": "^1.2.5",
     "tradingeconomics-stream": "^0.2.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",

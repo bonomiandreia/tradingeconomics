@@ -7,8 +7,24 @@
         @apply text-center focus:outline-none text-white bg-grey800 hover:bg-grey800 focus:ring-grey800  font-medium rounded-lg text-sm px-5 py-2.5
     }
 
-    .title-trading-economic {
-        @apply text-4xl text-bold 
+    .h1-title-trading-economic {
+        @apply text-4xl font-semibold
+    }
+
+    .h2-title-trading-economic {
+        @apply text-2xl font-semibold
+    }
+
+    .subtitle-trading-economic {
+        @apply text-base
+    }
+
+    .tooltip {
+        @apply invisible absolute;
+    }
+    
+    .has-tooltip:hover .tooltip {
+        @apply visible z-50;
     }
     
 }
