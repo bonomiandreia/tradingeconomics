@@ -9,11 +9,12 @@ This project is a web application for checking and comparing key financial indic
 - Tailwind: Chosen for allowing a rapid UI development, avoiding disorganization in css classes 
 
 I choose:
-Current Account Balance by country (BoP, US$)
-Credit ratings
-indicator?s=bn.cab.xoka (All the countries with Current Account Balance by country)
+- Current Account Balance by country (BoP, US$)
+- Credit ratings
+- indicator?s=bn.cab.xoka (All the countries with Current Account Balance by country)
 
-The user should specifies countries in the URL path, example: .../compares/sweden,mexico,new Zealand
+The user should specifies countries in the URL path, example: `.../compares/sweden,mexico,new Zealand`
+
 The component maps all countries with Current Account Balance by country and filter by the url countries
 
 `MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD`
