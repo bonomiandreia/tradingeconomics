@@ -1,3 +1,27 @@
+## Idea
+
+Figma: [https://www.figma.com/design/XNfK3eUB089jsCpj5P5UzC/Untitled?node-id=1-2&t=HcI1Hwevxa0P4ZHi-1]
+
+This project is a web application for checking and comparing key financial indicators for different countries, inspired by the Trading Economics platform.
+
+## Tech Stack
+- SSR: Used to keep the Trading Economics API key secure on the server
+- Tailwind: Chosen for allowing a rapid UI development, avoiding disorganization in css classes 
+
+I choose:
+Current Account Balance by country (BoP, US$)
+Credit ratings
+indicator?s=bn.cab.xoka (All the countries with Current Account Balance by country)
+
+The user should specifies countries in the URL path, example: .../compares/sweden,mexico,new Zealand
+The component maps all countries with Current Account Balance by country and filter by the url countries
+
+`MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD`
+uses these IDs to fetch the relevant historical data
+[https://api.tradingeconomics.com/worldBank/historical/?s=MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD&c=guest:guest]
+
+
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -39,6 +63,7 @@ bun run dev
 ```
 
 ## Production
+
 
 Build the application for production:
 

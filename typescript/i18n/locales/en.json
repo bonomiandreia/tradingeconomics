@@ -20,5 +20,10 @@
             "noData": "Ops! It doesn't have data yet. Try again later",
             "errorUrl": "Please add or remove countries to the URL to compare, e.g., /compares/mexico,sweden,New Zealand,thailand (Maximum 5, minimum 2)"
         }
+    },
+    "404": {
+        "ops": "Ops! Wrong page!",
+        "backTo": "Back to Compares page"
+
     }
 }
