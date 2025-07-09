@@ -2,6 +2,7 @@
 
 Figma: [https://www.figma.com/design/XNfK3eUB089jsCpj5P5UzC/Untitled?node-id=1-2&t=HcI1Hwevxa0P4ZHi-1]
 
+
 This project is a web application for checking and comparing key financial indicators for different countries, inspired by the Trading Economics platform.
 
 ## Tech Stack
@@ -21,7 +22,20 @@ The component maps all countries with Current Account Balance by country and fil
 uses these IDs to fetch the relevant historical data
 [https://api.tradingeconomics.com/worldBank/historical/?s=MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD&c=guest:guest]
 
+# Starter
 
+it needs to have:
+- node
+- .env
+
+for run docker, create a folder and inside a .env
+
+- _docker
+-    .env
+
+NUXT_PUBLIC_API_BASE_URL="https://api.tradingeconomics.com"
+
+NUXT_API_KEY="guest:guest" << api key
 
 # Nuxt Minimal Starter
 
