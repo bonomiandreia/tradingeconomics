@@ -8,12 +8,14 @@ export default defineEventHandler(async (event) => {
   const country = query.country || 'sweden'
 
   try {
-    const ratings = await api<CreditRating[]>(`/credit-ratings/country/${country}`)
+    // const ratings = await api<CreditRating[]>(`/credit-ratings/country/${country}`)
+    const ratings: any = [];
+
     return ratings
   } catch (error: any) {
     console.error(`Error fetching credit ratings for ${country}:`, error);
 
-    setResponseStatus(event, 500)
+    setResponseStatus(event, error.status)
     return {
       error: 'Failed to fetch credit ratings.',
       details: error.message,
