@@ -34,7 +34,7 @@
             </h1>
         </div>
       </div>
-        
+    {{ balanceSymbols }}
       <Snackbar
         v-model:show="snackBar.show"
         :message="snackBar.message"
@@ -45,6 +45,7 @@
   
   <script setup lang="ts">
   import type { CreditRating, GroupedCountryRating } from '~/types/creditRating';
+import type { WorldBankIndicator } from '~/types/wordBankBalance';
   
   definePageMeta({
     layout: "default",
@@ -69,7 +70,30 @@
         const countriesParam = route.params.countries as string | undefined;
         return countriesParam ? countriesParam.split(',').length >= 2 : false;
     });
-  
+
+
+    const { data: allCountriesData, pending: listPending, error: listError } = useAsyncData<WorldBankIndicator[]>(
+        'fullWordBankBalanceList',
+        () => $fetch('/api/wordBankBalanceList')
+    );
+
+    const balanceSymbols = computed(() => {
+        if (!allCountriesData.value || !countriesQuery.value) {
+            return '';
+        }
+
+        const countryList: string[] = Array.isArray(countriesQuery.value)
+            ? countriesQuery.value
+            : countriesQuery.value.split(',');
+
+        const targetCountries = countryList.map((country: string) => country.trim().toLowerCase());
+
+        const symbols = allCountriesData.value
+            .filter(item => targetCountries.includes(item.country.toLowerCase()))
+            .map(filteredItem => filteredItem.symbol);
+
+        return symbols.join(',');
+    });
   
   const { data: ratingsByCountry, pending, error } = useFetch('/api/creditRating', {
     key: 'creditRatingsByCountry',
