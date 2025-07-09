@@ -14,7 +14,7 @@ export interface GroupedCountryRating {
 }
 
 export enum OutlookIcon {
-    positive = 'i-garden:thumbs-up-fill-16',
-    negative = 'i-garden:thumbs-down-fill-16',
-    stable = 'i-garden:dash-fill-12'
+    positive = 'i-radix-icons:triangle-up',
+    negative = 'i-radix-icons:triangle-down',
+    stable = 'i-radix-icons:divider-horizontal'
 }

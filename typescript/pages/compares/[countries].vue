@@ -2,38 +2,40 @@
     <div class="px-4 sm:px-6 mt-5">
       <div class="mx-auto max-w-screen-xl">
         <h1 class="h2-title-trading-economic flex">
-          Compare countries
+          {{ $t('pages.compares.comparesCountries') }}
           <div class="has-tooltip text-2xl flex">
-            <span class='tooltip rounded text-sm shadow-lg p-1 bg-grey50 -mt-8'>Maximum 3 countries</span>
+            <span class='tooltip rounded text-sm shadow-lg p-1 bg-grey50 -mt-8'>{{ $t('pages.compares.maximumAndMinimum') }}</span>
             <Icon class="relative bottom-1 text-sm text-center ml-2 text-grey500" name="i-garden:info-stroke-16"/>
           </div>
         </h1>
   
         <div class="text-center" v-if="error"  data-aos="fade-up">
-          Ops! something went wrong. {{ error.message }}
+            {{ $t('pages.compares.error') }} {{ error.message }}
         </div>
   
         <div class="text-center" v-if="ratingsByCountry?.length == 0"  data-aos="fade-up">
-          Ops! It doesn't have data yet. Try again later
+          {{ $t('pages.compares.noData') }}
         </div>
 
         <div class="text-center" v-if="!pending && !hasEnoughCountries" data-aos="fade-up">
-            Please add countries to the URL to compare, e.g., /compare/mexico,sweden,New Zealand,thailand
+            {{ $t('pages.compares.errorUrl') }}
         </div>
   
-        <div class="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4" v-if="!pending && hasEnoughCountries">
+        <div class="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4" v-if="!pending && hasEnoughCountries" data-aos="fade-up">
             <CountryCard 
               v-for="item in ratingsByCountry"
               :key="item.Country"
               :country-data="item"
             />
         </div>
-        <div class="mt-5">
+        <div class="mt-7">
             <h1 class="h2-title-trading-economic flex">
-                Current Account Balance by country (BoP, US$)
+                {{ $t('pages.compares.currentBalance') }}
             </h1>
         </div>
-        <ChartBalance :countries="mockCountries" :symbols-query="mockQuery"></ChartBalance>
+        <div class="mt-5 mb-5">
+            <ChartBalance :countries="selectedCountryDetails" :symbols-query="balanceSymbols"></ChartBalance>
+        </div>
       </div>
       <Snackbar
         v-model:show="snackBar.show"
@@ -51,8 +53,9 @@
     layout: "default",
   });
   const route = useRoute();
-  const mockQuery = ref('MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD');
-  const mockCountries =  ref([ { "country": "Mexico", "symbol": "MEX.BN.CAB.XOKA.CD" }, { "country": "New Zealand", "symbol": "NZL.BN.CAB.XOKA.CD" }, { "country": "Sweden", "symbol": "SWE.BN.CAB.XOKA.CD" }, { "country": "Thailand", "symbol": "THA.BN.CAB.XOKA.CD" } ])
+  const { t } = useI18n();
+//   const mockQuery = ref('MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD');
+//   const mockCountries =  ref([ { "country": "Mexico", "symbol": "MEX.BN.CAB.XOKA.CD" }, { "country": "New Zealand", "symbol": "NZL.BN.CAB.XOKA.CD" }, { "country": "Sweden", "symbol": "SWE.BN.CAB.XOKA.CD" }, { "country": "Thailand", "symbol": "THA.BN.CAB.XOKA.CD" } ])
 
   const snackBar = ref({
     show: false,
@@ -70,7 +73,12 @@
 
     const hasEnoughCountries = computed(() => {
         const countriesParam = route.params.countries as string | undefined;
-        return countriesParam ? countriesParam.split(',').length >= 2 : false;
+        
+        if (!countriesParam) {
+            return false;
+        }
+        const count = countriesParam.split(',').length;
+        return count >= 2 && count <= 5;
     });
 
 

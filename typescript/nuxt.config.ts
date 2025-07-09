@@ -9,4 +9,17 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon', '@nuxtjs/i18n', 'nuxt-aos'],
   css: ['@/assets/scss/tailwind.scss'],
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', name: 'english', file: 'en.json' },
+      { code: 'pt', name: 'Portugues', file: 'pt.json' }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: false,
+      redirectOn: 'root',
+    },
+  },
 })

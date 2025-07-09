@@ -6,14 +6,14 @@
         <Icon :name="countryData.Icon"/>
       </div>
 
-      <h3 class="h3-title-trading-economic">Credit rating</h3>
+      <h3 class="h3-title-trading-economic"> {{ $t('components.countryCard.creditRating') }} </h3>
       <div class="mt-3">
         <div class="grid grid-cols-4" v-for="rating in countryData.Ratings" :key="rating.Agency">
           <div>{{ rating?.Agency }}</div>
           <div>{{ getYear(rating?.Date) }}</div>
           <div>{{ rating?.Rating }}</div>
           <div class="has-tooltip text-2xl">
-            <span class='tooltip rounded text-sm shadow-lg p-1 bg-grey50 -mt-8'>Outlook: {{ rating?.Outlook }}</span>
+            <span class='tooltip rounded text-sm shadow-lg p-1 bg-grey50 text-grey900 -mt-8'>{{ $t('components.countryCard.outlook') }} {{ rating?.Outlook }}</span>
             <Icon :name="getIconClass(rating?.Outlook)"/>
             <Icon class="relative bottom-2 text-sm text-center ml-2 text-grey500" name="i-garden:info-stroke-16"/>
           </div>
@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import type { GroupedCountryRating } from '~/types/creditRating';
 import { OutlookIcon } from '~/types/creditRating';
-
+const { t } = useI18n();
 
 const props = defineProps<{
   countryData: GroupedCountryRating;
@@ -47,4 +47,6 @@ const getIconClass = (outlook?: string) => {
   const key = outlook.toLowerCase() as keyof typeof OutlookIcon;
   return OutlookIcon[key] || '';
 }
+
+
 </script>

@@ -1,0 +1,28 @@
+{
+    "components": {
+        "countryCard": {
+            "creditRating": "Classificação de Crédito",
+            "outlook": "Perspectiva"
+        },
+        "chartBalance": {
+            "loading": "a carregar...",
+            "sorry": "Desculpe, ocorreu um erro ao carregar os dados.",
+            "noData": "Ops! Ainda não há dados. Tente novamente mais tarde",
+            "balance": "Saldo (USD)"
+        }
+    },
+    "pages": {
+        "compares": {
+            "comparesCountries": "Comparar países",
+            "maximumAndMinimum": "Máximo de 5 países e mínimo de 2",
+            "currentBalance": "Balança de Conta Corrente por país (BDP, US$)",
+            "error": "Ops! Algo deu errado.",
+            "noData": "Ops! Ainda não há dados. Tente novamente mais tarde",
+            "errorUrl": "Por favor, adicione ou remova países na URL para comparar, ex: /compares/mexico,sweden,New Zealand,thailand (Máximo de 5, mínimo de 2)"
+        }
+    },
+    "404": {
+        "ops": "Ops! Página errada!",
+        "backTo": "Volte para Comparar países"
+    }
+}
