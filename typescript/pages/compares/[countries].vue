@@ -33,8 +33,8 @@
                 Current Account Balance by country (BoP, US$)
             </h1>
         </div>
+        <ChartBalance :countries="mockCountries" :symbols-query="mockQuery"></ChartBalance>
       </div>
-    {{ balanceSymbols }}
       <Snackbar
         v-model:show="snackBar.show"
         :message="snackBar.message"
@@ -44,13 +44,15 @@
   </template>
   
   <script setup lang="ts">
-  import type { CreditRating, GroupedCountryRating } from '~/types/creditRating';
-import type { WorldBankIndicator } from '~/types/wordBankBalance';
+    import type { CreditRating, GroupedCountryRating } from '~/types/creditRating';
+    import type { WorldBankIndicator } from '~/types/wordBankBalance';
   
   definePageMeta({
     layout: "default",
   });
   const route = useRoute();
+  const mockQuery = ref('MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD');
+  const mockCountries =  ref([ { "country": "Mexico", "symbol": "MEX.BN.CAB.XOKA.CD" }, { "country": "New Zealand", "symbol": "NZL.BN.CAB.XOKA.CD" }, { "country": "Sweden", "symbol": "SWE.BN.CAB.XOKA.CD" }, { "country": "Thailand", "symbol": "THA.BN.CAB.XOKA.CD" } ])
 
   const snackBar = ref({
     show: false,
@@ -77,22 +79,35 @@ import type { WorldBankIndicator } from '~/types/wordBankBalance';
         () => $fetch('/api/wordBankBalanceList')
     );
 
-    const balanceSymbols = computed(() => {
+    const filteredCountriesData = computed(() => {
+
         if (!allCountriesData.value || !countriesQuery.value) {
-            return '';
+            return [];
         }
+
 
         const countryList: string[] = Array.isArray(countriesQuery.value)
             ? countriesQuery.value
             : countriesQuery.value.split(',');
 
-        const targetCountries = countryList.map((country: string) => country.trim().toLowerCase());
+        const targetCountries = countryList.map(country => country.trim().toLowerCase());
 
-        const symbols = allCountriesData.value
-            .filter(item => targetCountries.includes(item.country.toLowerCase()))
-            .map(filteredItem => filteredItem.symbol);
 
+        return allCountriesData.value.filter(item => {
+            return targetCountries.includes(item.country.toLowerCase());
+        });
+    });
+
+    const balanceSymbols = computed(() => {
+        const symbols = filteredCountriesData.value.map(item => item.symbol);
         return symbols.join(',');
+    });
+
+    const selectedCountryDetails = computed(() => {
+        return filteredCountriesData.value.map(item => ({
+            country: item.country,
+            symbol: item.symbol
+        }));
     });
   
   const { data: ratingsByCountry, pending, error } = useFetch('/api/creditRating', {

@@ -8,3 +8,15 @@ export interface WorldBankIndicator {
     historicalDataSymbol: string;
     lastUpdate: string;
   }
+
+
+export interface CountrySymbols {
+    country: string;
+    symbol: string;
+}
+
+export interface HistoricalDataItem {
+    symbol: string;
+    date: string;
+    value: number;
+  }

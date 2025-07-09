@@ -4,7 +4,7 @@ import { apiFetch as api } from "../utils/apiKey"
 export default defineEventHandler(async (event) => {
 
   try {
-    //const countriesList = await api<any[]>(`/worldbank/indicator?s=bn.cab.xoka.cd`)
+    // const countriesList = await api<any[]>(`/worldbank/indicator?s=bn.cab.xoka.cd`)
     const countriesList: any = [];
     return countriesList
   } catch (error: any) {
