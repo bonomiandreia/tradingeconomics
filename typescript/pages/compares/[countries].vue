@@ -8,6 +8,7 @@
             <Icon class="relative bottom-1 text-sm text-center ml-2 text-grey500" name="i-garden:info-stroke-16"/>
           </div>
         </h1>
+        <span class="subtitle-sm-trading-economic">{{ $t('pages.compares.subtitleDisponibleCountries') }}</span>
   
         <div class="text-center" v-if="error"  data-aos="fade-up">
             {{ $t('pages.compares.error') }} {{ error.message }}

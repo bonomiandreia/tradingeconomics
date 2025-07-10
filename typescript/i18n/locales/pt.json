@@ -15,7 +15,8 @@
     "pages": {
         "compares": {
             "comparesCountries": "Comparar países",
-            "maximumAndMinimum": "Máximo de 5 países e mínimo de 2",
+            "maximumAndMinimum": "Máximo de 5 países e mínimo de 2. Para comparar os países tu podes escrever o nome deles em inglês na URL, separados por vírgulas. ex: /compares/mexico,sweden,New Zealand,thailand",
+            "subtitleDisponibleCountries": "Países disponíveis: New zealand, sweden, thailand, mexico",
             "currentBalance": "Balança de Conta Corrente por país (BDP, US$)",
             "error": "Ops! Algo deu errado.",
             "noData": "Ops! Ainda não há dados. Tente novamente mais tarde",

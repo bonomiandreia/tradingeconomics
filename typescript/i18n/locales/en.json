@@ -15,7 +15,8 @@
     "pages": {
         "compares": {
             "comparesCountries": "Compare countries",
-            "maximumAndMinimum": "Maximum 5 countries and minimum 2",
+            "maximumAndMinimum": "Maximum 5 countries and minimum 2. To compare them you can type their name in english on the URL separated by commas, example: /compares/mexico,sweden,New Zealand,thailand",
+            "subtitleDisponibleCountries": "You can use the following countries: New zealand, sweden, thailand, mexico",
             "currentBalance": "Current Account Balance by country (BoP, US$)",
             "error": "Ops! something went wrong.",
             "noData": "Ops! It doesn't have data yet. Try again later",
