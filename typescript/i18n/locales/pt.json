@@ -7,8 +7,9 @@
         "chartBalance": {
             "loading": "a carregar...",
             "sorry": "Desculpe, ocorreu um erro ao carregar os dados.",
-            "noData": "Ops! Ainda não há dados. Tente novamente mais tarde",
-            "balance": "Saldo (USD)"
+            "noData": "Ops! Ainda não há dados. Tente ånovamente mais tarde",
+            "balance": "Saldo (USD)",
+            "loadChart": "Carregar Gráfico"
         }
     },
     "pages": {

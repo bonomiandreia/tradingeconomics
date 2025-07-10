@@ -1,30 +1,41 @@
 <template>
   <div>
-    <div v-if="pending">
-      {{ $t('components.chartBalance.loading') }} 
-    </div>
+    <button
+      @click="callServiceCountries"
+      class="group inline-flex items-center bg-grey700 text-grey50 p-2 mt-2"
+    >
+      <span class="text-center">
+      {{ $t('components.chartBalance.loadChart') }}
+      </span>
+    </button>
 
-    <div v-else-if="error">
-      {{ $t('components.chartBalance.sorry') }} 
-    </div>
+      <div v-if="showChart" class="mt-5">
+        <div v-if="pending">
+          {{ $t('components.chartBalance.loading') }} 
+        </div>
 
+        <div v-else-if="error">
+          {{ $t('components.chartBalance.sorry') }} 
+        </div>
 
-    <div v-else-if="historicalData">
-      <ClientOnly>
-        <VueApexCharts
-          width="100%"
-          height="500"
-          type="line"
-          :options="chartOptions"
-          :series="chartSeries"
-        ></VueApexCharts>
-      </ClientOnly>
+        
+        <div v-else-if="historicalData">
+          <ClientOnly>
+            <VueApexCharts
+              width="100%"
+              height="500"
+              type="line"
+              :options="chartOptions"
+              :series="chartSeries"
+            ></VueApexCharts>
+          </ClientOnly>
 
-    </div>
+        </div>
 
-    <div v-else>
-      {{ $t('components.chartBalance.noData') }} 
-    </div>
+        <div v-else>
+          {{ $t('components.chartBalance.noData') }} 
+        </div>
+      </div>
   </div>
 </template>
 
@@ -34,6 +45,7 @@ import type { CountrySymbols, HistoricalDataItem } from '~/types/wordBankBalance
 import type { ApexOptions } from 'apexcharts';
 import VueApexCharts from 'vue3-apexcharts';
 const { t } = useI18n();
+const showChart = ref(false);
 
 const props = defineProps({
 
@@ -49,12 +61,18 @@ const props = defineProps({
 });
 
 
-const { data: historicalData, pending, error } = useFetch('/api/wordBankBalanceByCountry', {
+const { data: historicalData, pending, error, execute } = useFetch('/api/wordBankBalanceByCountry', {
   query: computed(() => ({
     countrySymbol: props.symbolsQuery,
   })),
   key: computed(() => `historicalData-${props.symbolsQuery}`),
+  immediate: false, 
 });
+
+const callServiceCountries = () => {
+  showChart.value = true;
+  execute();
+};
 
 const processedDataListByCountry = computed(() => {
 
