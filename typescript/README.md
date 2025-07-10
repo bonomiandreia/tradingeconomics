@@ -2,6 +2,9 @@
 
 Figma: [https://www.figma.com/design/XNfK3eUB089jsCpj5P5UzC/Untitled?node-id=1-2&t=HcI1Hwevxa0P4ZHi-1]
 
+Online: [https://venerable-mandazi-d864bc.netlify.app/compares/mexico,sweden]
+
+(its a free hostage sometimes can be slow)
 
 This project is a web application for checking and comparing key financial indicators for different countries, inspired by the Trading Economics platform.
 
