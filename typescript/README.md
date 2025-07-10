@@ -18,6 +18,7 @@ I choose:
 - indicator?s=bn.cab.xoka (All the countries with Current Account Balance by country)
 
 The user should specifies countries in the URL path, example: `.../compares/sweden,mexico,new Zealand`
+To compare them you can type their name in english on the URL separated by commas
 
 The component maps all countries with Current Account Balance by country and filter by the url countries
 
