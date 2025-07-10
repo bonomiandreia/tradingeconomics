@@ -25,6 +25,13 @@ The component maps all countries with Current Account Balance by country and fil
 uses these IDs to fetch the relevant historical data
 [https://api.tradingeconomics.com/worldBank/historical/?s=MEX.BN.CAB.XOKA.CD,NZL.BN.CAB.XOKA.CD,SWE.BN.CAB.XOKA.CD,THA.BN.CAB.XOKA.CD&c=guest:guest]
 
+
+<img width="1184" alt="image" src="https://github.com/user-attachments/assets/470b8168-f260-49bd-bcee-8a936069d62d" />
+<img width="315" alt="image" src="https://github.com/user-attachments/assets/4f544fd6-15f9-4b06-bbab-0f760ad25a56" />
+
+
+
+
 # Starter
 
 it needs to have:
