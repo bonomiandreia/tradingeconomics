@@ -3,31 +3,31 @@
       <div class="mx-auto max-w-screen-xl">
         <h1 class="h2-title-trading-economic flex">
           {{ $t('pages.compares.comparesCountries') }}
-          <div class="has-tooltip text-2xl flex">
-            <span class='tooltip rounded text-sm shadow-lg p-1 bg-grey50 -mt-8'>{{ $t('pages.compares.maximumAndMinimum') }}</span>
+          <div class="has-tooltip relative text-2xl flex">
+            <span class='tooltip max-w-[120px] rounded text-sm shadow-lg p-1 bg-grey50 -mt-8'>{{ $t('pages.compares.maximumAndMinimum') }}</span>
             <Icon class="relative bottom-1 text-sm text-center ml-2 text-grey500" name="i-garden:info-stroke-16"/>
           </div>
         </h1>
         <span class="subtitle-sm-trading-economic">{{ $t('pages.compares.subtitleDisponibleCountries') }}</span>
   
-        <div class="text-center" v-if="error"  data-aos="fade-up">
+        <div class="text-center mt-3" v-if="error"  data-aos="fade-up"  data-aos-once="true">
             {{ $t('pages.compares.error') }} {{ error.message }}
         </div>
   
-        <div class="text-center" v-if="ratingsByCountry?.length == 0"  data-aos="fade-up">
+        <div class="text-center mt-3" v-if="ratingsByCountry?.length == 0"  data-aos="fade-up" data-aos-once="true">
           {{ $t('pages.compares.noData') }}
         </div>
 
-        <div class="text-center" v-if="!pending && !hasEnoughCountries" data-aos="fade-up">
+        <div class="text-center mt-2" v-if="!pending && !hasEnoughCountries" data-aos="fade-up" data-aos-once="true">
             {{ $t('pages.compares.errorUrl') }}
         </div>
   
-        <div class="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4" v-if="!pending && hasEnoughCountries" data-aos="fade-up">
-            <CountryCard 
-              v-for="item in ratingsByCountry"
-              :key="item.Country"
-              :country-data="item"
-            />
+        <div class="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4" v-if="!pending && hasEnoughCountries" data-aos="fade-up" data-aos-once="true">
+          <CountryCard 
+            v-for="item in ratingsByCountry"
+            :key="item.Country"
+            :country-data="item"
+          />
         </div>
         <div class="mt-7"  v-if="!listPending && !listError">
             <h1 class="h2-title-trading-economic flex">

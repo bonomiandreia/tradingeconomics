@@ -28,7 +28,7 @@
     }
 
     .tooltip {
-        @apply invisible absolute;
+        @apply invisible absolute p-2 text-xs sm:max-w-xs break-words;
     }
     
     .has-tooltip:hover .tooltip {
