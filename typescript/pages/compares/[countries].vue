@@ -1,9 +1,9 @@
 <template>
     <div class="px-4 sm:px-6 mt-5">
       <div class="mx-auto max-w-screen-xl">
-        <h1 class="h2-title-trading-economic flex">
+        <h1 class="h2-title-trading-economic relative flex">
           {{ $t('pages.compares.comparesCountries') }}
-          <div class="has-tooltip relative text-2xl flex">
+          <div class="has-tooltip text-2xl flex">
             <span class='tooltip max-w-[120px] rounded text-sm shadow-lg p-1 bg-grey50 -mt-8'>{{ $t('pages.compares.maximumAndMinimum') }}</span>
             <Icon class="relative bottom-1 text-sm text-center ml-2 text-grey500" name="i-garden:info-stroke-16"/>
           </div>
